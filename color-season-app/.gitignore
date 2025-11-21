@@ -1,0 +1,12 @@
+# dependencies
+node_modules/
+
+# environment / secrets
+.env
+
+# macOS
+.DS_Store
+
+# uploads
+uploads/
+
