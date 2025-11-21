@@ -59,6 +59,7 @@ app.use(express.static("public")); // serves index.html etc.
 
 // ========== /analyze ==========
 app.post("/analyze", upload.single("file"), async (req, res) => {
+  console.log("Analyze endpoint");
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded" });
   }
