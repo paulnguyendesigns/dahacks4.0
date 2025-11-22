@@ -4,3 +4,49 @@ node_modules
 # environment / secrets
 .env
 
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.so
+*.egg-info/
+*.egg
+*.manifest
+*.spec
+
+# --- Virtual Environment ---
+venv/
+env/
+ENV/
+.venv/
+.env.bak/
+pythonenv/
+
+# --- Pip cache ---
+pip-log.txt
+pip-delete-this-directory.txt
+.wheels/
+
+# --- Environment variables ---
+.env
+*.env
+
+# --- Flask ---
+instance/
+*.db
+*.sqlite
+*.sqlite3
+
+# --- VSCode settings ---
+.vscode/
+
+# --- macOS files ---
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# --- Byte-compiled C extensions ---
+build/
+dist/
