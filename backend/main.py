@@ -96,8 +96,10 @@ def analyze():
                                 "['Soft','Warm','Deep'] → Autumn; "
                                 "['Deep','Cool','Bright'] → Winter."
                                 "Don't depend deeply on the background; focus on the skin, hair, and eyes. The colors should match well and not be super neon bright."
-                                "Return exactly 18 flattering colors in rainbow order and 5 notes. "
-                                "Determine the colors using our skin, hair, and eye colors as well as the characteristic and season we have. Don't make it too bright or dull."
+                                "Return exactly 18 flattering colors and 5 notes. "
+                                "Determine the colors using our skin, hair, and eye colors and make sure characteristic and season we have matches with the season."
+                                "Use the internet sources to find these types of colors. They should not be too dull or bright."
+                                "Finally, put them in aesthetic rainbow order."
                             )
                         },
                         {
