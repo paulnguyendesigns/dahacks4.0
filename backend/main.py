@@ -88,14 +88,16 @@ def analyze():
                         {
                             "type": "text",
                             "text": (
-                                "Analyze the face in the image and determine the season from the 12-season system. "
-                                "Return exactly 18 flattering colors in rainbow order and 5 notes. "
-                                "Also return season_characteristics as a list of three descriptors. "
+                                "Analyze the face in the image and determine the season from the 12-season system that best matches us. "
+                                "Also return characteristics as a list of three descriptors. "
                                 "Use this mapping and only use one of the characteristics: "
                                 "['Bright','Warm','Light'] → Spring; "
                                 "['Light','Cool','Soft'] → Summer; "
                                 "['Soft','Warm','Deep'] → Autumn; "
                                 "['Deep','Cool','Bright'] → Winter."
+                                "Don't depend deeply on the background; focus on the skin, hair, and eyes. The colors should match well and not be super neon bright."
+                                "Return exactly 18 flattering colors in rainbow order and 5 notes. "
+                                "Determine the colors using our skin, hair, and eye colors as well as the characteristic and season we have. Don't make it too bright or dull."
                             )
                         },
                         {
