@@ -1,6 +1,6 @@
 import Upload from "./Upload.jsx";
 import Header from "./Header.jsx";
-import "/Users/paulnguyen/Desktop/dahacks4.0/frontend/src/index.css";
+import "./index.css";
 
 function App() {
   return (
