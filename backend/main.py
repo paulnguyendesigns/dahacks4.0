@@ -109,8 +109,11 @@ def analyze():
                         {
                             "type": "text",
                             "text": (
-                                "Analyze the face in the image and determine the season from the 12-season system. "
-                                "Return 8–12 flattering colors and 3–5 notes."
+                                "Analyze the face in the image and determine the season from the 12-season system where they use soft/true/dark autumn, dark/true/bright winter, bright/true/light spring, or light/true/soft summer. "
+                                "I'm looking for insight into which colors best suit me. Neglect the background and focus on the personl."
+                                "It should be a color analysis like what they do in Korea."
+                                "Don't use ugly neon bright colors if it doesn't fit with me."
+                                "Return exactly 18 flattering colors in rainbow order and 5 notes."
                             )
                         },
                         {

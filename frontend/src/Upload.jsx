@@ -1,9 +1,11 @@
 import { useState } from "react";
+import "./index.css";
 
 export default function Upload() {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("");
   const [analysis, setAnalysis] = useState(null);
+  const [preview, setPreview] = useState(null); // <-- new state for image preview
 
   const handleAnalyze = async () => {
     if (!file) {
@@ -37,33 +39,53 @@ export default function Upload() {
     }
   };
 
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+    if (selectedFile) {
+      setPreview(URL.createObjectURL(selectedFile)); // <-- create preview URL
+    } else {
+      setPreview(null);
+    }
+  };
+
   return (
-    <div style={{ maxWidth: 600, margin: "2rem auto", background: "#020617", border: "1px solid #1f2937", borderRadius: 16, padding: 16 }}>
+    <div className="upload-container">
       <input
         type="file"
         accept="image/*"
-        onChange={(e) => setFile(e.target.files[0])}
-        style={{ marginBottom: "1rem" }}
+        onChange={handleFileChange}
       />
-      <br />
+
+      {/* Show preview */}
+      {preview && (
+        <div style={{ margin: "1rem 0" }}>
+          <img
+            src={preview}
+            alt="Preview"
+            style={{ maxWidth: "100%", borderRadius: "10px" }}
+          />
+        </div>
+      )}
+
       <button onClick={handleAnalyze}>Analyze</button>
-      <p style={{ fontSize: 12, color: "#9ca3af" }}>{status}</p>
+      <p className="status-text">{status}</p>
 
       {analysis && (
-        <div style={{ marginTop: "16px" }}>
+        <div className="analysis-result">
           <h2>{analysis.season}</h2>
-          <p style={{ fontSize: 12, color: "#9ca3af" }}>
+          <p className="status-text">
             Confidence: {(analysis.confidence * 100).toFixed(0)}%
           </p>
-          <p style={{ fontSize: 12 }}>
+          <p>
             Skin: <code>{analysis.base_skin_hex}</code> | Hair: <code>{analysis.hair_hex}</code> | Eyes: <code>{analysis.eye_hex}</code>
           </p>
 
-          <div style={{ display: "flex", flexWrap: "wrap" }}>
+          <div className="palette-row">
             {analysis.palette.map((c) => (
-              <div key={c.hex} style={{ border: "1px solid #1f2937", borderRadius: 10, width: 90, margin: 4, fontSize: 11 }}>
-                <div style={{ height: 30, background: c.hex }}></div>
-                <div style={{ padding: 4 }}>
+              <div key={c.hex} className="swatch">
+                <div className="swatch-color" style={{ background: c.hex }}></div>
+                <div className="swatch-info">
                   <div>{c.name}</div>
                   <div style={{ fontFamily: "monospace" }}>{c.hex}</div>
                 </div>
@@ -72,7 +94,7 @@ export default function Upload() {
           </div>
 
           {analysis.notes && analysis.notes.length > 0 && (
-            <ul style={{ fontSize: 12 }}>
+            <ul>
               {analysis.notes.map((n, i) => (
                 <li key={i}>{n}</li>
               ))}
