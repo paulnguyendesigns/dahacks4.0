@@ -3,6 +3,7 @@ import os
 import json
 import base64
 import io
+from flask_cors import CORS
 from flask import Flask, request, jsonify, send_from_directory
 from werkzeug.utils import secure_filename
 from dotenv import load_dotenv
@@ -20,6 +21,7 @@ client = OpenAI(api_key=OPENAI_API_KEY)
 
 # ========== FLASK SETUP ==========
 app = Flask(__name__, static_folder="public", static_url_path="/public")
+CORS(app)
 
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
