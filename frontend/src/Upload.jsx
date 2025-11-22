@@ -6,7 +6,28 @@ export default function Upload() {
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState("");
   const [analysis, setAnalysis] = useState(null);
-  const [preview, setPreview] = useState(null); // <-- new state for image preview
+  const [preview, setPreview] = useState(null);
+
+  // Map AI season outputs to SEASON_DATA keys
+  const SEASON_MAP = {
+    "Bright Spring": "Bright Spring",
+    "True Spring": "True Spring",
+    "Light Spring": "Light Spring",
+    "Soft Summer": "Soft Summer",
+    "True Summer": "True Summer",
+    "Light Summer": "Light Summer",
+    "Deep Autumn": "Deep Autumn",
+    "True Autumn": "True Autumn",
+    "Soft Autumn": "Soft Autumn",
+    "Bright Winter": "Bright Winter",
+    "True Winter": "True Winter",
+    "Dark Winter": "Dark Winter",
+    // Optional: fallback if AI returns short seasons like "Spring"
+    "Spring": "Bright Spring",
+    "Summer": "Soft Summer",
+    "Autumn": "Deep Autumn",
+    "Winter": "True Winter"
+  };
 
   const handleAnalyze = async () => {
     if (!file) {
@@ -32,7 +53,15 @@ export default function Upload() {
       }
 
       const data = await res.json();
-      setAnalysis(data.analysis);
+
+      // Map AI season to our SEASON_DATA keys
+      const mappedSeason = SEASON_MAP[data.analysis.season] || data.analysis.season;
+
+      setAnalysis({
+        ...data.analysis,
+        season: mappedSeason
+      });
+
       setStatus("");
     } catch (err) {
       console.error(err);
@@ -44,7 +73,7 @@ export default function Upload() {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
     if (selectedFile) {
-      setPreview(URL.createObjectURL(selectedFile)); // <-- create preview URL
+      setPreview(URL.createObjectURL(selectedFile));
     } else {
       setPreview(null);
     }
@@ -52,13 +81,8 @@ export default function Upload() {
 
   return (
     <div className="upload-container">
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleFileChange}
-      />
+      <input type="file" accept="image/*" onChange={handleFileChange} />
 
-      {/* Show preview */}
       {preview && (
         <div style={{ margin: "1rem 0" }}>
           <img
@@ -100,12 +124,13 @@ export default function Upload() {
           )}
         </div>
       )}
+
       {analysis && (
-  <>
-    <CelebMatches season={analysis.season} />
-  </>
-)}
-      
+        <CelebMatches
+          season={analysis.season}              // mapped season
+          characteristic={analysis.characteristic}
+        />
+      )}
     </div>
   );
 }

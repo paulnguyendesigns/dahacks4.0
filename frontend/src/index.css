@@ -3,7 +3,7 @@
 
 body {
   font-family: 'Dosis', sans-serif;
-  background: #fef6f0; /* soft pastel cream */
+  background: #fff3eb; /* soft pastel cream */
   color: #4b4b4b;      /* soft gray for text */
   padding: 20px;
 }
@@ -184,7 +184,7 @@ body {
   border-radius: 16px;
   padding: 20px;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 12px rgba(200, 180, 200, 0.4);
+  box-shadow: 0 2px 8px rgba(226, 142, 209, 0.4);
 }
 
 .celeb-photo {

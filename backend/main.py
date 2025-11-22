@@ -27,34 +27,6 @@ UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
-# ========== CELEBRITY DATA ==========
-celebrities = [
-    {
-        "name": "Zendaya",
-        "season": "Deep Autumn",
-        "profileImage": "https://via.placeholder.com/300x400.png?text=Zendaya",
-        "outfits": [
-            {
-                "image": "https://via.placeholder.com/80.png?text=Outfit+1",
-                "description": "Rust dress with deep teal earrings."
-            }
-        ],
-        "note": "Looks amazing in rich warm tones like rust, teal, and gold."
-    },
-    {
-        "name": "Priyanka Chopra",
-        "season": "Deep Autumn",
-        "profileImage": "https://via.placeholder.com/300x400.png?text=Priyanka",
-        "outfits": [
-            {
-                "image": "https://via.placeholder.com/80.png?text=Outfit+1",
-                "description": "Terracotta gown with gold jewelry."
-            }
-        ],
-        "note": "Warm jewel tones and earthy colors flatter her undertones."
-    },
-]
-
 # ============================================================
 # ================   ANALYZE ENDPOINT   ======================
 # ============================================================
@@ -96,7 +68,7 @@ def analyze():
                     "content": (
                         "You are a stylist and seasonal color analyst. "
                         "Return ONLY JSON with: "
-                        '{ "season": string, "confidence": number, '
+                        '{"characteristic": string, "season": string,'
                         '"base_skin_hex": string, "hair_hex": string, '
                         '"eye_hex": string, '
                         '"palette": [{"name": string, "hex": string}], '
@@ -109,9 +81,14 @@ def analyze():
                         {
                             "type": "text",
                             "text": (
-                                "Analyze the face in the image and determine the season from the 12-season system. "
-                                "Make a professional color analysis based on my skin tone, undertones, and natural coloring. I'm looking for insight into which colors best suit me."
-                                "Return exactly 18 flattering colors in rainbow order and 5 notes."
+                            "Analyze the face in the image and determine the season from the 12-season system. "
+                            "Return exactly 18 flattering colors in rainbow order and 5 notes. "
+                            "Also return season_characteristics as a list of three descriptors. "
+                            "Use this mapping and only use one of the characteristics: "
+                            "['Bright','Warm','Light'] → Spring; "
+                            "['Light','Cool','Soft'] → Summer; "
+                            "['Soft','Warm','Deep'] → Autumn; "
+                            "['Deep','Cool','Bright'] → Winter."
                             )
                         },
                         {
@@ -135,18 +112,6 @@ def analyze():
     finally:
         if os.path.exists(filepath):
             os.remove(filepath)
-
-# ================   CELEBRITIES ENDPOINT   ==================
-@app.route("/celebrities", methods=["GET"])
-def get_celebrities():
-    season = request.args.get("season")
-    if not season:
-        return jsonify({"error": "Missing ?season= query parameter"}), 400
-
-    normalized = season.lower()
-    matches = [c for c in celebrities if c["season"].lower() == normalized]
-
-    return jsonify({"season": season, "celebrities": matches})
 
 # ================   STATIC FILES SERVING   ==================
 @app.route("/", defaults={"path": ""})
