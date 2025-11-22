@@ -22,7 +22,6 @@ body {
   border: 1px solid #f7d6e0; /* soft pink border */
   border-radius: 16px;
   padding: 24px;
-  box-shadow: 0 4px 12px rgba(200, 180, 200, 0.4);
 }
 
 .upload-container input[type="file"] {
@@ -82,7 +81,7 @@ body {
 }
 
 .status-text {
-  font-size: 12px;
+  font-size: 18px;
   color: #7d7d7d; /* soft gray text */
   margin-top: 0.5rem;
 }
@@ -117,7 +116,7 @@ body {
   border-radius: 10px;
   width: 90px;
   margin: 4px;
-  font-size: 11px;
+  font-size: 14px;
   overflow: hidden;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -137,7 +136,7 @@ body {
 }
 
 .analysis-result ul {
-  font-size: 12px;
+  font-size: 18px;
   margin-top: 8px;
   padding-left: 20px;
   color: #5a5a5a;
@@ -145,10 +144,10 @@ body {
 
 .app-header {
   display: flex;
-  justify-content: center; /* centers logo horizontally */
+  justify-content: space-between; /* centers logo horizontally */
   align-items: center;
   background-color: #ffffff; /* white header background */
-  padding: 35px 0;
+  padding: 30px 40px;
   margin: 0; /* remove bottom margin */
   width: 100%; /* full width */
   border-radius: 0; /* remove rounded corners */
@@ -159,11 +158,19 @@ body {
 }
 
 .logo {
-  height: 60px; /* adjust as needed */
+  height: 100px;
+  margin-right: 450px;
   width: auto;
 }
 
-.logo {
-  height: 100px;
-  width: auto;
+.header-left {
+  font-family: Tahoma, sans-serif;
+  color:#c96f6f;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  font-size: 20px;
+  font-weight: 600;
 }
+
+
