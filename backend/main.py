@@ -42,12 +42,18 @@ def analyze():
 
     try:
         # ===========================
-        # 1. RESIZE & COMPRESS IMAGE
+        # 1. RESIZE & CONVERT IMAGE
         # ===========================
         img = Image.open(filepath)
 
-        MAX_SIZE = 1024  # safe for OpenAI
-        img.thumbnail((MAX_SIZE, MAX_SIZE))  # maintains aspect ratio
+        # FIX: convert RGBA/PNG → RGB BEFORE JPEG save
+        if img.mode == "RGBA":
+            img = img.convert("RGB")
+        elif img.mode == "P":   # some PNGs use palette mode
+            img = img.convert("RGB")
+
+        MAX_SIZE = 1024
+        img.thumbnail((MAX_SIZE, MAX_SIZE))
 
         buffer = io.BytesIO()
         img.save(buffer, format="JPEG", quality=85)
@@ -58,6 +64,7 @@ def analyze():
 
         # ===========================
         # 2. CALL OPENAI
+        # (your original code unchanged)
         # ===========================
         response = client.chat.completions.create(
             model="gpt-4.1-mini",
@@ -81,14 +88,14 @@ def analyze():
                         {
                             "type": "text",
                             "text": (
-                            "Analyze the face in the image and determine the season from the 12-season system. "
-                            "Return exactly 18 flattering colors in rainbow order and 5 notes. "
-                            "Also return season_characteristics as a list of three descriptors. "
-                            "Use this mapping and only use one of the characteristics: "
-                            "['Bright','Warm','Light'] → Spring; "
-                            "['Light','Cool','Soft'] → Summer; "
-                            "['Soft','Warm','Deep'] → Autumn; "
-                            "['Deep','Cool','Bright'] → Winter."
+                                "Analyze the face in the image and determine the season from the 12-season system. "
+                                "Return exactly 18 flattering colors in rainbow order and 5 notes. "
+                                "Also return season_characteristics as a list of three descriptors. "
+                                "Use this mapping and only use one of the characteristics: "
+                                "['Bright','Warm','Light'] → Spring; "
+                                "['Light','Cool','Soft'] → Summer; "
+                                "['Soft','Warm','Deep'] → Autumn; "
+                                "['Deep','Cool','Bright'] → Winter."
                             )
                         },
                         {
@@ -113,7 +120,7 @@ def analyze():
         if os.path.exists(filepath):
             os.remove(filepath)
 
-# ================   STATIC FILES SERVING   ==================
+# ================   STATIC FILE SERVE   ====================
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def serve(path):
