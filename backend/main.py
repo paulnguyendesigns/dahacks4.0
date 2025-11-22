@@ -109,10 +109,8 @@ def analyze():
                         {
                             "type": "text",
                             "text": (
-                                "Analyze the face in the image and determine the season from the 12-season system where they use soft/true/dark autumn, dark/true/bright winter, bright/true/light spring, or light/true/soft summer. "
-                                "I'm looking for insight into which colors best suit me. Neglect the background and focus on the personl."
-                                "It should be a color analysis like what they do in Korea."
-                                "Don't use ugly neon bright colors if it doesn't fit with me."
+                                "Analyze the face in the image and determine the season from the 12-season system. "
+                                "Make a professional color analysis based on my skin tone, undertones, and natural coloring. I'm looking for insight into which colors best suit me."
                                 "Return exactly 18 flattering colors in rainbow order and 5 notes."
                             )
                         },
@@ -138,9 +136,7 @@ def analyze():
         if os.path.exists(filepath):
             os.remove(filepath)
 
-# ============================================================
 # ================   CELEBRITIES ENDPOINT   ==================
-# ============================================================
 @app.route("/celebrities", methods=["GET"])
 def get_celebrities():
     season = request.args.get("season")
@@ -152,9 +148,7 @@ def get_celebrities():
 
     return jsonify({"season": season, "celebrities": matches})
 
-# ============================================================
 # ================   STATIC FILES SERVING   ==================
-# ============================================================
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def serve(path):
@@ -162,8 +156,6 @@ def serve(path):
         return send_from_directory(app.static_folder, path)
     return send_from_directory(app.static_folder, "index.html")
 
-# ============================================================
 # ================   START SERVER   ==========================
-# ============================================================
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=3001, debug=True)

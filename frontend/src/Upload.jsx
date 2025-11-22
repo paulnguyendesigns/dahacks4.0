@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./index.css";
+import CelebMatches from "./CelebMatches";
 
 export default function Upload() {
   const [file, setFile] = useState(null);
@@ -74,9 +75,6 @@ export default function Upload() {
       {analysis && (
         <div className="analysis-result">
           <h2>{analysis.season}</h2>
-          <p className="status-text">
-            Confidence: {(analysis.confidence * 100).toFixed(0)}%
-          </p>
           <p>
             Skin: <code>{analysis.base_skin_hex}</code> | Hair: <code>{analysis.hair_hex}</code> | Eyes: <code>{analysis.eye_hex}</code>
           </p>
@@ -102,6 +100,12 @@ export default function Upload() {
           )}
         </div>
       )}
+      {analysis && (
+  <>
+    <CelebMatches season={analysis.season} />
+  </>
+)}
+      
     </div>
   );
 }
