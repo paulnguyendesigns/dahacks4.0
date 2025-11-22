@@ -163,26 +163,120 @@ const SEASON_DATA = {
   "True Winter": {
     celebrities: [
       {
-        name: "Dua Lipa",
-        image: "https://via.placeholder.com/200x250?text=Dua+Lipa",
+        name: "Henry Golding",
+        image: "./public/celebrityphotos/henrygolding.PNG",
         outfits: [
           {
-            img: "https://via.placeholder.com/120?text=Cobalt",
-            desc: "Cobalt blue top that enhances her contrast."
-          },
-          {
-            img: "https://via.placeholder.com/120?text=Black",
-            desc: "Classic black fit with silver accents."
+            img: "./public/celebrityphotos/truewintermale.PNG",
+            desc: "Lavendar button-down and Cobalt blue suit."
           }
         ]
       },
       {
-        name: "Lucy Liu",
-        image: "https://via.placeholder.com/200x250?text=Lucy+Liu",
+        name: "Jodie-Turner Smith",
+        image: "./public/celebrityphotos/jodiesmith.PNG",
         outfits: [
           {
-            img: "https://via.placeholder.com/120?text=Magenta",
-            desc: "Bold magenta dress for a crisp Winter pop."
+            img: "./public/celebrityphotos/truewinterfemale.PNG",
+            desc: "Hot pink dress for a crisp Winter pop."
+          }
+        ]
+      }
+    ]
+  },
+  "Dark Winter": {
+    celebrities: [
+      {
+        name: "Tom Cruise",
+        image: "./public/celebrityphotos/tomcruise.JPG",
+        outfits: [
+          {
+            img: "./public/celebrityphotos/darkwintermale.PNG",
+            desc: "Dark blue suit and maroon set."
+          }
+        ]
+      },
+      {
+        name: "Salma Hayek",
+        image: "./public/celebrityphotos/salmahayek.PNG",
+        outfits: [
+          {
+            img: "./public/celebrityphotos/darkwinterfemale.PNG",
+            desc: "Dark purple and maroon gown."
+          }
+        ]
+      }
+    ]
+  },
+  "Bright Winter": {
+    celebrities: [
+      {
+        name: "Megan Fox",
+        image: "./public/celebrityphotos/meganfox.JPG",
+        outfits: [
+          {
+            img: "./public/celebrityphotos/brightwinterfemale.PNG",
+            desc: "Bright blue and red set for a pop."
+          }
+        ]
+      },
+      {
+        name: "Lance Gross",
+        image: "./public/celebrityphotos/lancegross.PNG",
+        outfits: [
+          {
+            img: "./public/celebrityphotos/brightwintermale.PNG",
+            desc: "Emerald suit and red sportswear."
+          }
+        ]
+      }
+    ]
+  },
+
+  "Light Summmer": {
+    celebrities: [
+      {
+        name: "Princess Diana",
+        image: "./public/celebrityphotos/princessdiana.PNG",
+        outfits: [
+          {
+            img: "./public/celebrityphotos/lightsummerfemale.PNG",
+            desc: "Pastel blue and light pink set."
+          }
+        ]
+      },
+      {
+        name: "Ryan Gosling",
+        image: "./public/celebrityphotos/ryangosling.PNG",
+        outfits: [
+          {
+            img: "./public/celebrityphotos/lightsummermale.PNG",
+            desc: "Pastel blue and cyan suit."
+          }
+        ]
+      }
+    ]
+  },
+
+  "True Summmer": {
+    celebrities: [
+      {
+        name: "Megan Boone",
+        image: "./public/celebrityphotos/meganboone.PNG",
+        outfits: [
+          {
+            img: "./public/celebrityphotos/truesummerfemale.JPG",
+            desc: "Bright red crop top and drak blue gown."
+          }
+        ]
+      },
+      {
+        name: "Matt Bomer",
+        image: "./public/celebrityphotos/mattbomer.PNG",
+        outfits: [
+          {
+            img: "./public/celebrityphotos/truesummermale.PNG",
+            desc: "Blue and turquoise suit."
           }
         ]
       }
