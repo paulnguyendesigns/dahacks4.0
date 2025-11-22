@@ -16,6 +16,14 @@ const SEASON_DATA = {
           { img: "https://via.placeholder.com/120?text=Peach", desc: "Peach top with bright coral accents." },
           { img: "https://via.placeholder.com/120?text=Sunshine", desc: "Sunshine yellow dress—classic Spring color." }
         ]
+      },
+      {
+        name: "Taylor Swift",
+        image: "https://via.placeholder.com/200x250?text=Taylor+Swift",
+        outfits: [
+          { img: "https://via.placeholder.com/120?text=Peach", desc: "Peach top with bright coral accents." },
+          { img: "https://via.placeholder.com/120?text=Sunshine", desc: "Sunshine yellow dress—classic Spring color." }
+        ]
       }
     ]
   },
@@ -190,38 +198,38 @@ export default function CelebMatches({ characteristic, season }) {
         Celebrity Matches for {normalizedSeason}
       </h2>
 
-
-      {data.celebrities.map((celeb) => (
-        <div key={celeb.name} className="celeb-card">
-          <img src={celeb.image} alt={celeb.name} className="celeb-photo" />
-          <h3>{celeb.name}</h3>
-
-          <div className="outfit-row">
-            {celeb.outfits.map((o, index) => (
-              <div key={index} className="outfit-card">
-                <img src={o.img} alt="Outfit" className="outfit-image" />
-                <p>{o.desc}</p>
-              </div>
-            ))}
+{data.celebrities.length >= 2 && (
+  <>
+    {/* First celeb */}
+    <div key={data.celebrities[0].name} className="celeb-card">
+      <img src={data.celebrities[0].image} alt={data.celebrities[0].name} className="celeb-photo" />
+      <h3>{data.celebrities[0].name}</h3>
+      <div className="outfit-row">
+        {data.celebrities[0].outfits.map((o, i) => (
+          <div key={i} className="outfit-card">
+            <img src={o.img} alt="Outfit" className="outfit-image" />
+            <p>{o.desc}</p>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+    </div>
 
-            {data.celebrities.map((celeb) => (
-        <div key={celeb.name} className="celeb-card">
-          <img src={celeb.image} alt={celeb.name} className="celeb-photo" />
-          <h3>{celeb.name}</h3>
-
-          <div className="outfit-row">
-            {celeb.outfits.map((o, index) => (
-              <div key={index} className="outfit-card">
-                <img src={o.img} alt="Outfit" className="outfit-image" />
-                <p>{o.desc}</p>
-              </div>
-            ))}
+    {/* Second celeb */}
+    <div key={data.celebrities[1].name} className="celeb-card">
+      <img src={data.celebrities[1].image} alt={data.celebrities[1].name} className="celeb-photo" />
+      <h3>{data.celebrities[1].name}</h3>
+      <div className="outfit-row">
+        {data.celebrities[1].outfits.map((o, i) => (
+          <div key={i} className="outfit-card">
+            <img src={o.img} alt="Outfit" className="outfit-image" />
+            <p>{o.desc}</p>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+    </div>
+  </>
+)}
+
     </div>
 
 
