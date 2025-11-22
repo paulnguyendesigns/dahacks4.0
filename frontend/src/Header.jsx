@@ -1,6 +1,5 @@
 import React from "react";
 import "./index.css";
-import logo from "./assets/LOGO.PNG";
 
 export default function Header() {
   return (
@@ -11,7 +10,7 @@ export default function Header() {
         <span className="header-title">Contact</span>
       </div>
 
-      <img src={logo} alt="Season Color Finder" className="logo" />
+      <img src="public/logo.png" alt="Season Color Finder" className="logo" />
 
       <div className="header-right" />
     </header>
