@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./index.css";
+import CelebMatches from "./CelebMatches";
 
 export default function Upload() {
   const [file, setFile] = useState(null);
@@ -99,6 +100,12 @@ export default function Upload() {
           )}
         </div>
       )}
+      {analysis && (
+  <>
+    <CelebMatches season={analysis.season} />
+  </>
+)}
+      
     </div>
   );
 }
