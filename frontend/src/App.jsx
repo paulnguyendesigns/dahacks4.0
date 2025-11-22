@@ -6,7 +6,7 @@ function App() {
   return (
     <div style={{ textAlign: "center", minHeight: "100vh" }}>
       <Header />
-      <h1 className="main-title">Season Color Finder</h1>
+      <h1 className="main-title">Hue Day: Season Color Finder</h1>
       <Upload />
     </div>
   );
