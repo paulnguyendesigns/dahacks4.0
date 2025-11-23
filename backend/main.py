@@ -88,19 +88,46 @@ def analyze():
                         {
                             "type": "text",
                             "text": (
-                                "Analyze the face in the image and determine the season from the 12-season system that best matches us. "
-                                "Also return characteristics as a list of three descriptors. "
-                                "Use this mapping and only use one of the characteristics: "
-                                "['Bright','True','Light'] → Spring; "
-                                "['Light','True','Soft'] → Summer; "
-                                "['Soft','True','Dark'] → Autumn; "
-                                "['Dark','True','Bright'] → Winter."
-                                "Only use the characteristics as according to the top chart."
-                                "Don't depend deeply on the background; focus on the skin, hair, and eyes. The colors should match well and not be super neon bright."
-                                "Return exactly 24 flattering colors and 5 notes. "
-                                "Determine the colors using our skin, hair, and eye colors and make sure characteristic and season we have matches with the season."
-                                "Use the internet sources to find these types of colors. They should not be too dull or bright."
-                                "Finally, put them in aesthetic rainbow order."
+                                    """
+Analyze the face in the image and determine the correct season from the 12-season color analysis system. 
+Return ONLY one of these exact season names (spelled exactly as below):
+
+Bright Spring
+True Spring
+Light Spring
+Light Summer
+True Summer
+Soft Summer
+Soft Autumn
+True Autumn
+Deep Autumn
+Deep Winter
+True Winter
+Bright Winter
+
+Next, return exactly ONE characteristic from the valid groupings below. 
+Do NOT create new characteristic combinations:
+
+• For Spring seasons → choose ONLY one: Bright, True, or Light
+• For Summer seasons → choose ONLY one: Light, True, or Soft
+• For Autumn seasons → choose ONLY one: Soft, True, or Deep
+• For Winter seasons → choose ONLY one: Deep, True, or Bright
+
+The characteristic MUST correctly match the season group. 
+Never combine multiple descriptors (NOT 'Light Cool Soft'). Only ONE descriptor.
+
+Focus the analysis ONLY on the user's skin, hair, and eye colors. 
+Do NOT depend heavily on the background. 
+Select a season whose palettes align naturally with real human undertones—not neon, artificial, or overly dull colors.
+
+Return exactly:
+• 24 flattering colors
+• 5 helpful notes
+• All 24 colors ordered in aesthetic rainbow/light-to-deep progression.
+
+Your output MUST ensure the season name matches EXACTLY one of the 12 predefined season keys above so that our CelebMatches lookup always works.
+
+                                    """
                             )
                         },
                         {

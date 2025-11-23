@@ -179,7 +179,7 @@ const SEASON_DATA = {
       }
     ]
   },
-  "Dark Winter": {
+  "Deep Winter": {
     celebrities: [
       {
         name: "Tom Cruise",
